@@ -38,7 +38,6 @@ def send_email():
     data = request.json()
     prompt = data.get('message')
     client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
-    # prompt = message
     generated_text = client.generate(prompt)
     gmate_receiver = "kanugurajesh3@gmail.com"
     subject = "Email from Gmate"
