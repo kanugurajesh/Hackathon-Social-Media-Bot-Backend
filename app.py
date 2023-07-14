@@ -54,7 +54,9 @@ def send_email():
         print("Email sent successfully")
     # return str(generated_text[0])
     # send the generated_text in json format
-    return str(generated_text[0])
+    # return 
+    # return a json response
+    return generated_text[0]
 
 if __name__ == '__main__':
    app.run()
