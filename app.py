@@ -9,7 +9,6 @@ from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
 app = Flask(__name__)
-client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
 gmate_sender = "gmate4869@gmail.com"
 gmate_password = "flytcvfsbivpaeno"
 
@@ -36,9 +35,9 @@ def hello():
 
 @app.route('/send_email', methods=['POST'])
 def send_email():
+    client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
     prompt = "send a email to rajesh"
     generated_text = client.generate(prompt)
-    time.sleep(5)
     gmate_receiver = "kanugurajesh3@gmail.com"
     subject = "Email from Gmate"
     em = EmailMessage()
