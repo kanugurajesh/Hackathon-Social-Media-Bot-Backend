@@ -35,7 +35,7 @@ def hello():
 
 @app.route('/send_email', methods=['POST'])
 def send_email():
-    prompt = "send a email to yashwanth"
+    prompt = "send a email to rajesh"
     generated_text = client.generate(prompt)
     gmate_receiver = "kanugurajesh3@gmail.com"
     subject = "Email from Gmate"
@@ -53,7 +53,7 @@ def send_email():
         print("Email sent successfully")
     # return str(generated_text[0])
     # send the generated_text in json format
-    return generated_text[0]
+    return str(generated_text[0])
 
 if __name__ == '__main__':
    app.run()
