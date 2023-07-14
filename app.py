@@ -3,6 +3,7 @@ import cohere
 from email.message import EmailMessage
 import ssl
 import smtplib
+import time
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
@@ -37,6 +38,7 @@ def hello():
 def send_email():
     prompt = "send a email to rajesh"
     generated_text = client.generate(prompt)
+    time.sleep(5)
     gmate_receiver = "kanugurajesh3@gmail.com"
     subject = "Email from Gmate"
     em = EmailMessage()
