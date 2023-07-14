@@ -51,7 +51,9 @@ def send_email():
         server.login(gmate_sender, gmate_password)
         server.send_message(em)
         print("Email sent successfully")
-    return str(generated_text[0])
+    # return str(generated_text[0])
+    # send the generated_text in json format
+    return generated_text[0]
 
 if __name__ == '__main__':
    app.run()
