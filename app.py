@@ -63,6 +63,7 @@ from email.message import EmailMessage
 import ssl
 import smtplib
 import time
+import cohere
 
 from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
@@ -94,15 +95,17 @@ def hello():
 
 @app.route('/send_email', methods=['POST'])
 def send_email():
+    client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
     data = request.get_json()
     prompt = data.get('message')
+    generated_text = client.generate(prompt)
     gmate_receiver = "kanugurajesh3@gmail.com"
     subject = "Email from Gmate"
     em = EmailMessage()
     em['Subject'] = subject
     em['From'] = gmate_sender
     em['To'] = gmate_receiver
-    em.set_content(str(prompt))
+    em.set_content(str(generated_text[0]))
 
     context = ssl.create_default_context()
 
@@ -110,7 +113,7 @@ def send_email():
         server.login(gmate_sender, gmate_password)
         server.send_message(em)
         print("Email sent successfully")
-    return {"message": str(prompt)}
+    return {"message": str(generated_text[0])}
 
 if __name__ == '__main__':
    app.run()
