@@ -80,17 +80,17 @@ def send_whatapp():
 
 @app.route('/send_sms', methods=['POST'])
 def send_sms():
-    # cohere_client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
-    # data = request.get_json()
-    # number = data.get('sms')
-    # client = Client(account_sid, auth_token)
-    # body = cohere_client.generate(data.get('message'))[0]
-    # message = client.messages.create(
-    # from_='+14155238886',
-    # body=body,
-    # to=number
-    # )
-    return {"message": str("hi")}
+    cohere_client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
+    data = request.get_json()
+    number = data.get('sms')
+    client = Client(account_sid, auth_token)
+    body = cohere_client.generate(data.get('message'))[0]
+    message = client.messages.create(
+    from_='+15739203473',
+    body=body,
+    to=f'{number}'
+    )
+    return {"message": str(body)}
 
 if __name__ == '__main__':
    app.run()
