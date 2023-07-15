@@ -2,7 +2,6 @@ import os
 from email.message import EmailMessage
 import ssl
 import smtplib
-import time
 import cohere
 from twilio.rest import Client
 from flask import (Flask, redirect, render_template, request,
