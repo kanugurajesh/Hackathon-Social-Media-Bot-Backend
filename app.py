@@ -64,7 +64,7 @@ def send_email():
         print("Email sent successfully")
     return {"message": str(generated_text[0])}
 
-@app.route('/send_whatapp', methods=['POST'])
+@app.route('/send_whatsapp', methods=['POST'])
 def send_whatapp():
     cohere_client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
     data = request.get_json()
