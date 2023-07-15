@@ -37,6 +37,7 @@ MANIFEST
 pip-log.txt
 pip-delete-this-directory.txt
 node_modules/
+myenv/
 # Unit test / coverage reports
 htmlcov/
 .tox/
