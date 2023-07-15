@@ -137,7 +137,7 @@ def send_whatapp():
     body=body,
     to=f'whatsapp:{number}'
     )
-    return {"message": str(body[0])}
+    return {"message": str(body)}
 
 if __name__ == '__main__':
    app.run()
