@@ -88,7 +88,7 @@ def send_sms():
     message = client.messages.create(
     from_='+14155238886',
     body=body,
-    to=f'{number}'
+    to=number
     )
     return {"message": str(body)}
 
