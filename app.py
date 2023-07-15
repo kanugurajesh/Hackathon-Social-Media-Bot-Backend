@@ -93,13 +93,21 @@ def hello():
        print('Request for hello page received with no name or blank name -- redirecting')
        return redirect(url_for('index'))
 
+@app.route('/respond', methods=['POST'])
+def respond():
+    client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
+    data = request.get_json()
+    prompt = data.get('message')
+    generated_text = client.generate(prompt)
+    return {"message": str(generated_text[0])}
+
 @app.route('/send_email', methods=['POST'])
 def send_email():
     client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
     data = request.get_json()
     prompt = data.get('message')
     generated_text = client.generate(prompt)
-    gmate_receiver = "kanugurajesh3@gmail.com"
+    gmate_receiver = data.get('gmail')
     subject = "Email from Gmate"
     em = EmailMessage()
     em['Subject'] = subject
