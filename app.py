@@ -8,10 +8,10 @@ from flask import (Flask, redirect, render_template, request,
                    send_from_directory, url_for)
 
 app = Flask(__name__)
-gmate_sender = "gmate4869@gmail.com"
-gmate_password = "flytcvfsbivpaeno"
-account_sid = 'AC332ba26c88efd14b819e4b006d48d05e'
-auth_token = 'bd1cd494665f878b66fe78f1f12d7b1c'
+gmate_sender = "ge49@gmail.com"
+gmate_password = "flcvfsvpaeno"
+account_sid = 'Aa26c88efdb819e4b0065e'
+auth_token = 'bdcd466878bf8f12d7b1c'
 
 @app.route('/')
 def index():
@@ -36,7 +36,7 @@ def hello():
 
 @app.route('/respond', methods=['POST'])
 def respond():
-    client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
+    client = cohere.Client('S3tQc1i346N45O5A85eNzhh8o0qLb4FLdIA9')
     data = request.get_json()
     prompt = data.get('message')
     generated_text = client.generate(prompt)
@@ -44,7 +44,7 @@ def respond():
 
 @app.route('/send_email', methods=['POST'])
 def send_email():
-    client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
+    client = cohere.Client('S3tQc1i6m6N9022O5A85e5678hh8oLb4dIA9Fu')
     data = request.get_json()
     prompt = data.get('message')
     generated_text = client.generate(prompt)
@@ -66,21 +66,20 @@ def send_email():
 
 @app.route('/send_whatsapp', methods=['POST'])
 def send_whatapp():
-    cohere_client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
+    cohere_client = cohere.Client('S3tQc1i6m5AA85eNzhh0qLb4FIA9Fu')
     data = request.get_json()
     number = data.get('whatsapp')
     client = Client(account_sid, auth_token)
     body = cohere_client.generate(data.get('message'))[0]
     message = client.messages.create(
-    from_='whatsapp:+14155238886',
+    from_='whatsapp:+147532386883',
     body=body,
     to=f'whatsapp:{number}'
     )
     return {"message": str(body)}
-
 @app.route('/send_sms', methods=['POST'])
 def send_sms():
-    cohere_client = cohere.Client('S3tQc1i6m6N905AO5A85eNzhh8o0qLb4FLdIA9Fu')
+    cohere_client = cohere.Client('S3tQc1m6N905AO5A85eNh8o0b4dIFu')
     data = request.get_json()
     number = data.get('sms')
     client = Client(account_sid, auth_token)
